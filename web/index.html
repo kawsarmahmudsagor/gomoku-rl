@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomoku - AI Agent vs Human</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Gomoku Game</h1>
+            <p>Get 5 in a row to win!</p>
+        </header>
+
+        <div class="main-content">
+            <div class="game-section">
+                <div class="game-info">
+                    <div class="info-box">
+                        <h2>Status</h2>
+                        <p id="gameStatus">Loading...</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h2>Turn</h2>
+                        <p id="currentTurn">
+                            <span class="stone human">●</span> Human
+                        </p>
+                    </div>
+
+                    <div class="info-box">
+                        <h2>Model Status</h2>
+                        <p id="modelStatus">Loading ONNX model...</p>
+                    </div>
+                </div>
+
+                <canvas id="gameBoard" width="504" height="504"></canvas>
+
+                <div class="controls">
+                    <button id="newGameBtn" class="btn btn-primary">New Game</button>
+                    <button id="resetBtn" class="btn btn-secondary">Reset Board</button>
+                    <button id="undoBtn" class="btn btn-secondary">Undo Last Move</button>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-box">
+                    <h3>How to Play</h3>
+                    <ul>
+                        <li>🔵 You are the blue stones (●)</li>
+                        <li>⚫ AI is the white stones (○)</li>
+                        <li>Click on empty cells to place your stone</li>
+                        <li>Get 5 stones in a row to win</li>
+                        <li>First move is always yours</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Model Info</h3>
+                    <ul>
+                        <li><strong>Framework:</strong> PyTorch → ONNX</li>
+                        <li><strong>Algorithm:</strong> Double DQN</li>
+                        <li><strong>Board Size:</strong> 9×9</li>
+                        <li><strong>Input:</strong> Board state (1×9×9)</li>
+                        <li><strong>Output:</strong> 81 Q-values</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Game Statistics</h3>
+                    <ul>
+                        <li>Games Played: <span id="gamesPlayed">0</span></li>
+                        <li>Your Wins: <span id="humanWins">0</span></li>
+                        <li>AI Wins: <span id="aiWins">0</span></li>
+                        <li>Draws: <span id="draws">0</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with PyTorch, ONNX Runtime JS, and Vanilla JavaScript</p>
+            <p>Model trained on 9×9 Gomoku gameplay</p>
+        </footer>
+    </div>
+
+    <!-- ONNX Runtime Web -->
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@latest/dist/ort.all.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/board-renderer.js"></script>
+    <script src="js/agent.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
