@@ -135,9 +135,9 @@ class GomokuTrainer:
         }
 
     def train(self,
-             num_episodes: int = 200000,
-             checkpoint_interval: int = 10000,
-             eval_interval: int = 1000,
+             num_episodes: int = 400000,
+             checkpoint_interval: int = 20000,
+             eval_interval: int = 2000,
              self_play_ratio: float = 0.2):
         """
         Main training loop.
